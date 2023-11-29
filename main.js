@@ -325,6 +325,19 @@ let openForm2 = (parentid) => {
   // Pass the parent ID to the form 2 HTML file
   window.open(`detailsForm.html?id=${parentid}`, "_blank");
 };
+let updatRow2 = (colapsRowId) => {
+  
+  const newTab = window.open("detailsForm.html", "_blank");
+
+
+  newTab.onload = () => {
+  
+    newTab.editRow2(colapsRowId);
+  };
+
+  console.log("edit");
+};
+
 
 // let createTable = () => {
 //   // debugger
@@ -469,7 +482,12 @@ let openForm2 = (parentid) => {
 //   });
 // };
 
-
+let toggleIcon = (button) => {
+  let icon = button.querySelector("i");
+   
+  icon.classList.toggle("bi-plus-lg");
+  icon.classList.toggle("bi-dash");
+};
 let createTable = () => {
   table.innerHTML = "";
   // collapseTables.innerHTML = "";
@@ -489,7 +507,7 @@ let createTable = () => {
         <tr id=${rowId}>
           <th scope="row">${
             i + 1
-          } <button type="button" class="btn22 " data-bs-toggle="collapse" href="#${collapseId}" role="button" aria-expanded="false" aria-controls="${collapseId}" ><i class="bi bi-plus-lg"></i></button></th>
+          } <button type="button" class="btn22 " id="btn22" data-bs-toggle="collapse" href="#${collapseId}" role="button" aria-expanded="false" aria-controls="${collapseId}" onclick="toggleIcon(this)" title="Click to Expand/Collapse"><i class="bi bi-plus-lg"></i></button></th>
           
          
           
@@ -506,8 +524,8 @@ let createTable = () => {
           <td>${mergedObject1.phoneNumber || ""}</td>
 
           <td class="tb-butn">
-            <button type="button" class="btn btn-primary mb-2" onclick="editRow('${rowId}')"><i class="bi bi-pencil-square"></i></button>
-            <button type="button" class="btn btn-danger" onclick="deleteRow('${rowId}')"><i class="bi bi-trash3-fill"></i></button>
+            <button type="button" class="btn1 " onclick="editRow('${rowId}')"><i class="bi bi-pencil-square" title="Click to Edit Row"></i></button>
+            <button type="button" class="btn2 " onclick="deleteRow('${rowId}')"><i class="bi bi-trash3-fill" title="Click to Delete Row"></i></button>
             <button type="button" class="btn btn-danger my-1" onclick="openForm2('${parentid}')">Add more</button>
            
           </td>
@@ -516,7 +534,8 @@ let createTable = () => {
 let colapsRowId;
     // Collapse row
     if (Object.keys(mergedObject2).length > 0) {
-       colapsRowId=`${rowId}_details`
+      
+      colapsRowId = `row_${i}_details`;
      table.innerHTML += `
         <tr id="colapsRowId">
           <td colspan="15" class="p-0">
@@ -580,8 +599,8 @@ let colapsRowId;
                                             : ""
                                         }</td>
                       <td class="tb-butn">
-                    
-                        <button type="button" class="btn btn-danger" onclick="deleteRow2('colapsRowId')">Delete</button>
+                      <button type="button" id="updatebtn2" class="btn3 " onclick="updatRow2('colapsRowId')"><i class="bi bi-pencil-square" title="Click to Edit Row"></i></button>
+                        <button type="button" class="btn4" onclick="deleteRow2('colapsRowId')"><i class="bi bi-trash3-fill" title="Click to Delete Row"></i></button>
                       </td>
                     </tr>
                   </tbody>
@@ -592,7 +611,9 @@ let colapsRowId;
         </tr>`;
     }
   }
+  
 };
+
 
 
 
@@ -715,25 +736,117 @@ let clearFormFields = () => {
   phoneNumber.value = "";
 };
 
+// let deleteRow = (rowId) => {
+//   let rowIndex = parseInt(rowId.split("_")[1]);
+//   $("#exampleModalCenter").modal("show");
+//   document.getElementById("updatebtn");
+//   updatebtn.style.display = "none";
+//   let delbtn2 = document.getElementById("delbtn");
+//   delbtn2.style.display = "block";
+//   document.getElementById("exampleModalLongTitle").innerHTML =
+//     "Row Delete Notification!";
+//   document.getElementById("modal-body").innerHTML =
+//     "Are You Sure to Delete This Row";
+//   document.getElementById("btnDelete").innerHTML = "No";
+//   document.getElementById("delbtn").addEventListener("click", function () {
+
+//     data.splice(rowIndex, 1);
+//     localStorage.setItem("data", JSON.stringify(data));
+//     createTable();
+//     $("#exampleModalCenter").modal("hide");
+//   });
+// };
+// let deleteRow = (rowId) => {
+//   let rowIndex = parseInt(rowId.split("_")[1]);
+
+//   // Check if there is a corresponding collapse row
+//   let collapseRowId = `row_${rowIndex}_details`;
+//   let collapseRow = document.getElementById(collapseRowId);
+
+//   if (collapseRow) {
+//     // If the collapse row exists, remove it
+//     // collapseRow.parentNode.removeChild(collapseRow);
+//   document.getElementById("modal-body").innerHTML =
+//     "there is a colapse row exist";
+//     console.log("collapseRow", collapseRow);
+//   }
+
+//   // Show the confirmation modal
+//   $("#exampleModalCenter").modal("show");
+
+//   // Hide the update button
+//   document.getElementById("updatebtn").style.display = "none";
+
+//   // Show the delete button
+//   let delbtn2 = document.getElementById("delbtn");
+//   delbtn2.style.display = "block";
+
+//   // Set modal title and body
+//   document.getElementById("exampleModalLongTitle").innerHTML =
+//     "Row Delete Notification!";
+//   document.getElementById("modal-body").innerHTML =
+//     "Are You Sure to Delete This Row";
+
+//   // Set the modal button text
+//   document.getElementById("btnDelete").innerHTML = "No";
+
+//   // Add click event listener to delete button
+//   document.getElementById("delbtn").addEventListener("click", function () {
+//   data.splice(rowIndex, 1);
+
+//   // Remove the associated collapse row from the data2 array
+//   data2.splice(rowIndex, 1);
+
+//   // Update local storage
+//   localStorage.setItem("data", JSON.stringify(data));
+//   localStorage.setItem("data2", JSON.stringify(data2));
+
+//   // Update the tables
+//   createTable();
+//   createTable2();
+
+//     // Hide the confirmation modal
+//     $("#exampleModalCenter").modal("hide");
+//   });
+// };
+
 let deleteRow = (rowId) => {
   let rowIndex = parseInt(rowId.split("_")[1]);
+
+
   $("#exampleModalCenter").modal("show");
-  document.getElementById("updatebtn");
-  updatebtn.style.display = "none";
+  document.getElementById("updatebtn").style.display = "none";
   let delbtn2 = document.getElementById("delbtn");
   delbtn2.style.display = "block";
   document.getElementById("exampleModalLongTitle").innerHTML =
     "Row Delete Notification!";
   document.getElementById("modal-body").innerHTML =
     "Are You Sure to Delete This Row";
+
+  // Check if there is a corresponding collapse row
+  let collapseRow = document.getElementById(`collapse_${rowId}`);
+  if (collapseRow) {
+    document.getElementById("modal-body").innerHTML +=
+      "<br/><strong>Warning:</strong> A collapse row exists. Deleting this row will also delete the collapse row.";
+  }
+
   document.getElementById("btnDelete").innerHTML = "No";
   document.getElementById("delbtn").addEventListener("click", function () {
+    // Delete the parent row
     data.splice(rowIndex, 1);
+       data2.splice(rowIndex, 1);
     localStorage.setItem("data", JSON.stringify(data));
+     localStorage.setItem("data2", JSON.stringify(data2));
     createTable();
+    createTable2();
+
+    
+
     $("#exampleModalCenter").modal("hide");
   });
 };
+
+
 
 function printTable() {
   var tableClone = document.getElementById("tabel1").cloneNode(true);
