@@ -447,10 +447,12 @@ passMatric.value="";
 let deleteRow2 = (childRowId) => {
   let rowIndex = parseInt(childRowId.split("_")[1]);
 
-  alert("delete");
-  data2.splice(rowIndex, 1);
+  // alert("delete");
+  let confir = confirm("ARe you sure to delete this row")
+  console.log(confir);
+  if (confir) {data2.splice(rowIndex, 1);
   localStorage.setItem("data2", JSON.stringify(data2));
-  createTable2();
+  createTable2();}
 };
 function resetForm1() {
   document.getElementById("submitBtn2").innerText = "Submit";

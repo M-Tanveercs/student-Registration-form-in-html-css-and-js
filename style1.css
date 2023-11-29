@@ -19,7 +19,12 @@ body {
     justify-items: center;
 }
 .left {
-      background-color: #dcdde1;
+    background: #DA4453;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #89216B, #DA4453);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #89216B, #DA4453);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     position: relative;
     text-align: center;
     border-top-right-radius: 25%;
@@ -32,7 +37,13 @@ body {
    
 }
 .left2{
-background-color: rgb((14, 9, 94) 76, 114);
+/* background-color: rgb((14, 9, 94) 76, 114); */
+background: #C33764;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #1D2671, #C33764);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #1D2671, #C33764);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     position: relative;
     text-align: center;
     border-top-left-radius: 25%;
@@ -64,7 +75,7 @@ color: #F2C010;
     color:white
 }
 .left  h1{
-color:#40407a;
+color:#5C0E35;
     
     
     font-size: 30px;
@@ -122,7 +133,13 @@ label{
 
     margin-bottom: 20px !important;
 
-    background: rgb(58, 117, 189);
+    /* background: rgb(58, 117, 189); */
+    background: #0f0c29;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: #455A64;
 
 
@@ -132,26 +149,46 @@ label{
     
     margin-bottom: 20px !important;
    
-    background: #192a56;
+    /* background: #192a56; */
+    background: #c31432;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #240b36, #c31432);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #240b36, #c31432);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: white;
    
   
 }
-.btn2{
-background-color: transparent;
+.btn21{
+/* background-color: transparent; */
+background: #C33764;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #1D2671, #C33764);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #1D2671, #C33764);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     margin-right: 40px;
     margin-left: 40px;
     margin-bottom: 20px;
     /* box-shadow: #f8f8f675 0px 10px 20px 0px; */
     box-shadow: rgb(58, 117, 189) 0px 50px 100px -20px, rgba(181, 176, 176, 0.3) 0px 30px 60px -30px, rgba(3, 42, 90, 0.322) 0px -2px 6px 0px inset !important
 }
-.btn1{
+
+.btn12{
     /* border-bottom-left-radius: 20%;
     border-top-left-radius: 20%;
 border-bottom-right-radius: 20%;
     border-top-right-radius: 20%; */
   /* border-radius: 15%; */
-  background-color: #dcdde1;
+  /* background-color: #dcdde1!important; */
+background: #DA4453;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #89216B, #DA4453);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #89216B, #DA4453);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     margin-right: 40px;
     margin-left: 40px;
     margin-bottom: 20px;
@@ -164,23 +201,23 @@ border-bottom-right-radius: 20%;
 input{
     box-shadow: rgba(183, 183, 191, 0.25) 0px 50px 100px -20px, rgba(181, 176, 176, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
-.btn1 button{
+.btn12 button{
     background-color: darkcyan !important;
     
     color: white;
 }
-.btn1 button:hover{
+.btn12 button:hover{
 background-color: #F2C010 !important;
         color: white;
 }
-.btn2 button {
+.btn21 button {
     background-color: white !important;
 
     color:(58, 117, 189) ;
     box-shadow: rgb(58, 117, 189) 0px 50px 100px -20px, rgba(181, 176, 176, 0.3) 0px 30px 60px -30px, rgba(3, 42, 90, 0.322) 0px -2px 6px 0px inset !important
 }
 
-.btn2 button:hover {
+.btn21 button:hover {
     background-color: #F2C010 !important;
     color: white;
 }
@@ -223,15 +260,21 @@ padding: 0px 1 0px 1px;
 .btn4{
 outline: none ;
 border: none;
-/* background-color:#F2C010; */
-color:#455A64 ;
+/* background-color:#192a56; */
+color: rgb(76, 18, 163);
 padding: 2px 3px 2px 3px;
 border-radius: 2px;
+box-shadow: none;
+
+}
+.btn1{
+    margin-left: 18px
 }
 .btn2 {
-    margin-left: -15px;
+    margin-left: 5px;
+    /* background-color:  */
     box-shadow: none;
-    color: red;
+    color: rgb(220, 20, 20);
     padding: 2px;
 }
 .btn4{
@@ -249,6 +292,10 @@ border-radius: 2px;
     color: #dcdde1;
  } */
 
+ #colapsRowId th {
+    background-color:#dcdde1!important;
+        color: #192a56 !important;
+ }
 
 
 

@@ -326,18 +326,14 @@ let openForm2 = (parentid) => {
   window.open(`detailsForm.html?id=${parentid}`, "_blank");
 };
 let updatRow2 = (colapsRowId) => {
-  
   const newTab = window.open("detailsForm.html", "_blank");
 
-
   newTab.onload = () => {
-  
     newTab.editRow2(colapsRowId);
   };
 
   console.log("edit");
 };
-
 
 // let createTable = () => {
 //   // debugger
@@ -359,7 +355,7 @@ let updatRow2 = (colapsRowId) => {
 //       table.innerHTML += `
 //       <tr id=${rowId}>
 //           <th scope="row">${index + 1}</th>
-   
+
 //           <td>${mergedObject.fullName || ""}</td>
 //           <td>${mergedObject.fatherName || ""}</td>
 //           <td>${mergedObject.PostAdress || ""}</td>
@@ -375,7 +371,7 @@ let updatRow2 = (colapsRowId) => {
 //               <button type="button" class="btn btn-primary mb-2" onclick="editRow('${rowId}')">Update</button>
 //               <button type="button" class="btn btn-danger" onclick="deleteRow('${rowId}')">Delete</button>
 //               <button type="button" class="btn btn-danger" onclick="  openForm2(parentid); ">Add more</button>
-           
+
 //           </td>
 //       </tr>`;
 //     }
@@ -407,7 +403,7 @@ let updatRow2 = (colapsRowId) => {
 //       table.innerHTML += `
 //     <tr >
 //             <td colspan="15" class="p-0">
-               
+
 //                 <div  >
 //                     <div class="card card-body">
 //                         <table class="table">
@@ -434,7 +430,7 @@ let updatRow2 = (colapsRowId) => {
 //                             <tbody>
 //                                 <tr >
 //                                     <th scope="row">${index + 1}</th>
-                                      
+
 //                                         <td>${
 //                                           mergedObject.collegeName || ""
 //                                         }</td>
@@ -484,7 +480,7 @@ let updatRow2 = (colapsRowId) => {
 
 let toggleIcon = (button) => {
   let icon = button.querySelector("i");
-   
+
   icon.classList.toggle("bi-plus-lg");
   icon.classList.toggle("bi-dash");
 };
@@ -494,8 +490,8 @@ let createTable = () => {
 
   // Loop through data and data2 simultaneously
   for (let i = 0; i < Math.max(data.length, data2.length); i++) {
-    let mergedObject1 = data[i] || {}; 
-    let mergedObject2 = data2[i] || {}; 
+    let mergedObject1 = data[i] || {};
+    let mergedObject2 = data2[i] || {};
 
     let rowId = `row_${i}`;
     let collapseId = `collapse_${rowId}`;
@@ -526,17 +522,16 @@ let createTable = () => {
           <td class="tb-butn">
             <button type="button" class="btn1 " onclick="editRow('${rowId}')"><i class="bi bi-pencil-square" title="Click to Edit Row"></i></button>
             <button type="button" class="btn2 " onclick="deleteRow('${rowId}')"><i class="bi bi-trash3-fill" title="Click to Delete Row"></i></button>
-            <button type="button" class="btn btn-danger my-1" onclick="openForm2('${parentid}')">Add more</button>
+            <button type="button" class="btn btn-info my-1" onclick="openForm2('${parentid}')">Add more</button>
            
           </td>
         </tr>`;
     }
-let colapsRowId;
+    let colapsRowId;
     // Collapse row
     if (Object.keys(mergedObject2).length > 0) {
-      
       colapsRowId = `row_${i}_details`;
-     table.innerHTML += `
+      table.innerHTML += `
         <tr id="colapsRowId">
           <td colspan="15" class="p-0">
             <div class="collapse" id="${collapseId}">
@@ -562,7 +557,7 @@ let colapsRowId;
                                 </tr>
                   <tbody>
                  
-                      <th scope="row">${i + 1}</th>
+                      <td scope="row"><b>${i + 1}</b></td>
                      
                     <td>${mergedObject2.collegeName || ""}</td>
                                         <td>${mergedObject2.inter || ""}</td>
@@ -611,12 +606,7 @@ let colapsRowId;
         </tr>`;
     }
   }
-  
 };
-
-
-
-
 
 let editRow = (rowId) => {
   document.getElementById("submitBtn").setAttribute("data-row-id", rowId);
@@ -813,7 +803,6 @@ let clearFormFields = () => {
 let deleteRow = (rowId) => {
   let rowIndex = parseInt(rowId.split("_")[1]);
 
-
   $("#exampleModalCenter").modal("show");
   document.getElementById("updatebtn").style.display = "none";
   let delbtn2 = document.getElementById("delbtn");
@@ -834,19 +823,15 @@ let deleteRow = (rowId) => {
   document.getElementById("delbtn").addEventListener("click", function () {
     // Delete the parent row
     data.splice(rowIndex, 1);
-       data2.splice(rowIndex, 1);
+    data2.splice(rowIndex, 1);
     localStorage.setItem("data", JSON.stringify(data));
-     localStorage.setItem("data2", JSON.stringify(data2));
+    localStorage.setItem("data2", JSON.stringify(data2));
     createTable();
     createTable2();
-
-    
 
     $("#exampleModalCenter").modal("hide");
   });
 };
-
-
 
 function printTable() {
   var tableClone = document.getElementById("tabel1").cloneNode(true);
