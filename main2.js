@@ -422,6 +422,7 @@ document.getElementById("submitBtn2").removeAttribute("data2-row-id");
 }
 let clearFormFields2=()=>{
   console.log("clearform2");
+  collegeName.value="";
   inter.value="";
  interMarks.value="";
      passInter.value="";
@@ -443,16 +444,61 @@ passMatric.value="";
     ]
      
 };
-
+const modalClose1 = () => {
+  $("#exampleModalCenter").modal("hide");
+};
+ 
 let deleteRow2 = (childRowId) => {
   let rowIndex = parseInt(childRowId.split("_")[1]);
+  let modal = document.getElementById("exampleModalCenter");
+  console.log(modal);
+   modal.innerHTML = ` <div class="modal-dialog modal-dialog-centered"   role="document">
+    <div class="modal-content" style="background-color: #192a56">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="color: #ffff; font-weight: bold;"></h5>
+        
+        <button type="button" onclick="modalClose1()"class="btn-close" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modal-body" style="color: #ffff ;">
+        
+      </div>
+      <div class="modal-footer ">
+        
+        <button  id="delbtn2" type="button"  style="display: none;" class="btn btn-primary">Yes</button>  <button  id="updatebtn2" type="button"  style="display: none;" class="btn btn-primary">Yes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnDelete2" onclick="modalClose1()"></button>
+      
+      </div>
+    </div>
+  </div>`;
+$("#exampleModalCenter").modal("show");
+// document.getElementById("updatebtn").style.display = "none";
+let delbtn3 = document.getElementById("delbtn2");
+delbtn3.style.display = "block";
+document.getElementById("exampleModalLongTitle").innerHTML =
+  "Row Delete Notification!";
+document.getElementById("modal-body").innerHTML =
+  "Are You Sure to Delete This Row";
 
-  // alert("delete");
-  let confir = confirm("ARe you sure to delete this row")
-  console.log(confir);
-  if (confir) {data2.splice(rowIndex, 1);
-  localStorage.setItem("data2", JSON.stringify(data2));
-  createTable2();}
+ document.getElementById("btnDelete2").innerHTML = "No";
+ document.getElementById("delbtn2").addEventListener("click", function () {
+
+
+ 
+   data2.splice(rowIndex, 1);
+  
+   localStorage.setItem("data2", JSON.stringify(data2));
+  
+   createTable2();
+
+   
+ });
+modalClose1();
+  // // alert("delete");
+  // let confir = confirm("ARe you sure to delete this row")
+  // console.log(confir);
+  // if (confir) {data2.splice(rowIndex, 1);
+  // localStorage.setItem("data2", JSON.stringify(data2));
+  // createTable2();}
 };
 function resetForm1() {
   document.getElementById("submitBtn2").innerText = "Submit";

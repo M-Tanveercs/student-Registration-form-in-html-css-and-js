@@ -829,8 +829,9 @@ let deleteRow = (rowId) => {
     createTable();
     createTable2();
 
-    $("#exampleModalCenter").modal("hide");
+     $("#exampleModalCenter").modal("hide");
   });
+ 
 };
 
 function printTable() {
